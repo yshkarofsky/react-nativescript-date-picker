@@ -42,9 +42,9 @@ export function DatePicker(props: DatePicker) {
     return (
         <flexboxLayout flexDirection="column" width={330} padding={10} borderColor="lightgrey" borderWidth={2} borderRadius="50px" backgroundColor="transparent">
             <flexboxLayout order={1} justifyContent="space-around">
-                <label text="<" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, -1))} />
+                <label fontSize='20px' text="<" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, -1))} />
                 <label style={styles.nameOfMonth} text={format(firstDateOnMonth, 'MMMM yyyy')} />
-                <label text=">" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, 1))} />
+                <label fontSize='20px' text=">" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, 1))} />
             </flexboxLayout>
             <gridLayout order={2} alignSelf="center" rows="40, 40, 40, 40, 40, 40, 40" columns="40, 40, 40, 40, 40, 40, 40" >
                 {
@@ -79,7 +79,9 @@ export function DatePicker(props: DatePicker) {
 
 const styles = StyleSheet.create({
     today: {
-        borderColor: "purple",
+        backgroundColor: "lightgrey",
+        fontSize: 18,
+        borderRadius: '30%',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     dayOutOfMonth: {
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'grey'
+        color: '#667085'
     },
     nameOfDay: {
         alignItems: 'flex-end',
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
     nameOfMonth: {
         color: '#344054',
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 20,
         fontStyle: 'normal'
     }
 });
