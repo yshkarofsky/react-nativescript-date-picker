@@ -48,7 +48,14 @@ export function DatePicker(props: DatePicker) {
             </flexboxLayout>
             <gridLayout rows="*, *, *, *, *, *, *" columns="*, *, *, *, *, *, *" >
                 {
-                    range(0, 7).map(i => <label key={i} style={styles.nameOfDay} row={0} col={i} text={daysOfWeek[i]} />)
+                    range(0, 7).map(i => <flexboxLayout 
+                            style={styles.nameOfDay} 
+                            row={0} col={i}                        
+                            key={i} 
+                        >
+                            <label key={i} style={styles.nameOfDay}  text={daysOfWeek[i]} />
+                        </flexboxLayout>
+                    )
                 }
                 {
                     range(1, 43).map(i => {
@@ -92,7 +99,7 @@ const styles = StyleSheet.create({
         color: 'grey'
     },
     nameOfDay: {
-        alignItems: 'center',
+        alignItems: 'flex-end',
         justifyContent: 'center',
         fontWeight: 'bold'
     }
