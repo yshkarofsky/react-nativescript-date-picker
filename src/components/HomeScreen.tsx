@@ -6,6 +6,7 @@ import { StyleSheet } from "react-nativescript";
 import { MainStackParamList } from "./NavigationParamList";
 import { DatePicker } from "./DatePicker";
 import { format } from "date-fns";
+import ModalDatePicker from "./ModalDatePicker";
 
 type HomeScreenProps = {
     route: RouteProp<MainStackParamList, "Home">,
@@ -19,6 +20,10 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
         <stackLayout style={styles.container}>
             <label color="purple" fontSize={30} text={`selected date ${format(date, 'MM dd, yyyy')}`} />
             <DatePicker 
+                onChange={(val) => setDate(val)}
+                date={date}
+            />
+            <ModalDatePicker 
                 onChange={(val) => setDate(val)}
                 date={date}
             />
