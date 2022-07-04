@@ -79,16 +79,20 @@ const styles = StyleSheet.create({
         backgroundColor: "purple",
         borderRadius: '50%',
         justifyContent: 'center',
+        alignItems: 'center'
     },
     dayInMonth: {
+        alignItems: 'center',
         justifyContent: 'center',
         color: "black",
     },
     dayOutOfMonth: {
+        alignItems: 'center',
         justifyContent: 'center',
         color: 'grey'
     },
     nameOfDay: {
+        alignItems: 'center',
         justifyContent: 'center',
         fontWeight: 'bold'
     }
