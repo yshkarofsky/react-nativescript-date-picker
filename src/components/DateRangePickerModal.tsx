@@ -2,27 +2,31 @@ import { AbsoluteLayout, StackLayout } from '@nativescript/core';
 import * as React from 'react'
 import * as RNS from 'react-nativescript'
 import { DatePicker } from './DatePicker';
+import { DateRangePicker } from './DateRangePicker';
 
 // This is needed to keep the reconciler aware that it's the same portal on each render
 const portalRoot = new RNS.NSVRoot();
 const portalLabel = "Unique label to describe my portal";
 
-type ModalDatePicker = {
-    onChange: (value: Date) => void
+type ModalDateRangePicker = {
+    onChange: ({startDate, endDate}) => void
     maxDate?: Date
     minDate?: Date
-    date: Date | null
+    startDate: Date | null
+    endDate: Date | null
     dayInMonthStyles?: any
     dayOutMonthStyles?: any
     selectedDayStyles?: any
     todayStyles?: any
+    betweenDatesStyles?: any
     calendarMonthNameStyles?: (date: Date) => JSX.Element
 }
 
-export default function ModalDatePicker(props: ModalDatePicker) {
-    const { onChange, maxDate, minDate, date, dayInMonthStyles, dayOutMonthStyles, selectedDayStyles, todayStyles, calendarMonthNameStyles } = props
+export default function ModalDateRangePicker(props: ModalDateRangePicker) {
+    const { onChange, maxDate, minDate, startDate, endDate, dayInMonthStyles, dayOutMonthStyles, selectedDayStyles, todayStyles, calendarMonthNameStyles, betweenDatesStyles } = props
     const containerRef = React.useRef(null); // A ref to the container 
     const portalRef = React.useRef(null); // A ref for the react portal
+    console.log(startDate, endDate)
 
     const handleOpenModal = () => {
         const containerView = containerRef.current?.nativeView as StackLayout
@@ -46,8 +50,8 @@ export default function ModalDatePicker(props: ModalDatePicker) {
 
     return (
         <>
-            <stackLayout ref={containerRef} style={{ padding: 10 }}>
-                <label text="&#xf133;" className="fas" onTap={handleOpenModal} style={{ fontSize: 18 }} />
+            <stackLayout ref={containerRef}>
+                <button text="Choose Date Range" onTap={handleOpenModal} />
             </stackLayout>
 
             {/*
@@ -57,9 +61,11 @@ export default function ModalDatePicker(props: ModalDatePicker) {
             {RNS.createPortal(
                 (
                     <absoluteLayout ref={portalRef}>
-                      <DatePicker 
+                      <DateRangePicker 
                         onChange={onChange}
-                        date={date}
+                        startDate={startDate}
+                        endDate={endDate}
+                        betweenDatesStyles={betweenDatesStyles}
                         minDate={minDate}
                         maxDate={maxDate}
                         dayInMonthStyles={dayInMonthStyles}
