@@ -40,13 +40,13 @@ export function DatePicker(props: DatePicker) {
     }
 
     return (
-        <stackLayout>
-            <flexboxLayout justifyContent="space-around">
+        <flexboxLayout flexDirection="column" width={330} padding={10} borderColor="lightgrey" borderWidth={2} borderRadius="50px">
+            <flexboxLayout order={1} justifyContent="space-around">
                 <label text="<" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, -1))} />
                 <label style={styles.nameOfMonth} text={format(firstDateOnMonth, 'MMMM yyyy')} />
                 <label text=">" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, 1))} />
             </flexboxLayout>
-            <gridLayout rows="*, *, *, *, *, *, *" columns="*, *, *, *, *, *, *" >
+            <gridLayout order={2} alignSelf="center" rows="40, 40, 40, 40, 40, 40, 40" columns="40, 40, 40, 40, 40, 40, 40" >
                 {
                     range(0, 7).map(i => <flexboxLayout 
                             style={styles.nameOfDay} 
@@ -67,13 +67,13 @@ export function DatePicker(props: DatePicker) {
                                 col={getDay(dateInCal)} 
                                 key={i} onTap={() => onChange(dateInCal)} 
                             >
-                                <label text={format(dateInCal, 'dd')} />
+                                <label text={format(dateInCal, 'd')} />
                             </flexboxLayout>
                         )
                     })
                 }
             </gridLayout>
-        </stackLayout>
+        </flexboxLayout>
     );
 }
 
@@ -87,14 +87,15 @@ const styles = StyleSheet.create({
         color: "white",
         backgroundColor: "purple",
         borderRadius: '30%',
-        height: '50%',
         justifyContent: 'center',
         alignItems: 'center'
     },
     dayInMonth: {
         alignItems: 'center',
         justifyContent: 'center',
-        color: "black",
+        color: "#344054",
+        fontSize: '16px',
+        fontWeight: '500'
     },
     dayOutOfMonth: {
         alignItems: 'center',
