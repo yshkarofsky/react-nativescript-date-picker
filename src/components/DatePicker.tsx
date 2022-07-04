@@ -25,7 +25,7 @@ export function DatePicker(props: DatePicker) {
     }, [dateSelected])
 
     const firstDateOnMonthCalendar = startOfWeek(firstDateOnMonth)
-    const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat']
+    const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sat']
 
     const getStylesForDay = (date: Date) => {
         if (format(date, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')) {
@@ -43,7 +43,7 @@ export function DatePicker(props: DatePicker) {
         <stackLayout>
             <flexboxLayout justifyContent="space-around">
                 <label text="<" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, -1))} />
-                <label text={format(firstDateOnMonth, 'MMMM yyyy')} />
+                <label style={styles.nameOfMonth} text={format(firstDateOnMonth, 'MMMM yyyy')} />
                 <label text=">" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, 1))} />
             </flexboxLayout>
             <gridLayout rows="*, *, *, *, *, *, *" columns="*, *, *, *, *, *, *" >
@@ -80,11 +80,14 @@ export function DatePicker(props: DatePicker) {
 const styles = StyleSheet.create({
     today: {
         borderColor: "purple",
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     selectedDate: {
         color: "white",
         backgroundColor: "purple",
-        borderRadius: '50%',
+        borderRadius: '30%',
+        height: '50%',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -101,6 +104,13 @@ const styles = StyleSheet.create({
     nameOfDay: {
         alignItems: 'flex-end',
         justifyContent: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+
+    },
+    nameOfMonth: {
+        color: '#344054',
+        fontWeight: 'bold',
+        fontSize: 16,
+        fontStyle: 'normal'
     }
 });
