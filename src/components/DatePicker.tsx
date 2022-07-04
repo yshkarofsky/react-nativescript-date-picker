@@ -77,15 +77,19 @@ const styles = StyleSheet.create({
     selectedDate: {
         color: "white",
         backgroundColor: "purple",
-        borderRadius: '50%'
+        borderRadius: '50%',
+        justifyContent: 'center',
     },
     dayInMonth: {
+        justifyContent: 'center',
         color: "black",
     },
     dayOutOfMonth: {
+        justifyContent: 'center',
         color: 'grey'
     },
     nameOfDay: {
+        justifyContent: 'center',
         fontWeight: 'bold'
     }
 });
