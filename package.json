@@ -1,7 +1,7 @@
 {
   "name": "react-nativescript-date-picker",
   "main": "src/app.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/yshkarofsky/react-nativescript-date-picker"
