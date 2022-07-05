@@ -31,9 +31,9 @@ export function DateRangePicker(props: DateRangePicker) {
 
     const getStylesForDay = (date: Date) => {
         if (startDate && format(date, 'yyyy-MM-dd') === format(startDate, 'yyyy-MM-dd')) {
-            return selectedDayStyles || styles.selectedDates
+            return selectedDayStyles || styles.selectedFirstDates
         } else if (endDate && format(date, 'yyyy-MM-dd') === format(endDate, 'yyyy-MM-dd')) {
-            return selectedDayStyles || styles.selectedDates 
+            return selectedDayStyles || styles.selectedLastDates 
         } else if (startDate && endDate && format(date, 'yyyy-MM-dd') < format(endDate, 'yyyy-MM-dd') && format(date, 'yyyy-MM-dd') > format(startDate, 'yyyy-MM-dd')) {
             return betweenDatesStyles || styles.inBetweenDates
         } else if (format(date, 'yyyy-MM') !== format(firstDateOnMonth, 'yyyy-MM')) {
@@ -62,7 +62,7 @@ export function DateRangePicker(props: DateRangePicker) {
     }
 
     return (
-        <flexboxLayout flexDirection="column" width={330} padding={10} borderColor="lightgrey" borderWidth={2} backgroundColor="transparent">
+        <flexboxLayout flexDirection="column" width="100%" padding={10} borderColor="lightgrey" borderWidth={2} backgroundColor="white">
             <flexboxLayout order={1} justifyContent="space-around">
                 <label fontSize='20px' text="<" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, -1))} />
                 <label style={styles.nameOfMonth} text={format(firstDateOnMonth, 'MMMM yyyy')} />
@@ -107,10 +107,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    selectedDates: {
+    selectedFirstDates: {
         color: "white",
         backgroundColor: "purple",
-        // borderRadius: '30%',
+        borderRadius: '50px 0 0 50px',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    selectedLastDates: {
+        color: "white",
+        backgroundColor: "purple",
+        borderRadius: '0 50px 50px 0',
         justifyContent: 'center',
         alignItems: 'center'
     },

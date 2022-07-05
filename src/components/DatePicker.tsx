@@ -40,7 +40,7 @@ export function DatePicker(props: DatePicker) {
     }
 
     return (
-        <flexboxLayout flexDirection="column" width={330} padding={10} borderColor="lightgrey" borderWidth={2}>
+        <flexboxLayout flexDirection="column" width="100%" padding={10} borderColor="lightgrey" borderWidth={2} backgroundColor="white">
             <flexboxLayout order={1} justifyContent="space-around">
                 <label fontSize='20px' text="<" onTap={() => setFirstDateOnMonth(addMonths(firstDateOnMonth, -1))} />
                 <label style={styles.nameOfMonth} text={format(firstDateOnMonth, 'MMMM yyyy')} />
