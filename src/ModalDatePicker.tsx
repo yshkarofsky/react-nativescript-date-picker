@@ -19,7 +19,7 @@ type ModalDatePicker = {
     calendarMonthNameStyles?: (date: Date) => JSX.Element
 }
 
-export default function ModalDatePicker(props: ModalDatePicker) {
+export default function DatePickerModal(props: ModalDatePicker) {
     const { onChange, maxDate, minDate, date, dayInMonthStyles, dayOutMonthStyles, selectedDayStyles, todayStyles, calendarMonthNameStyles } = props
     const containerRef = React.useRef(null); // A ref to the container 
     const portalRef = React.useRef(null); // A ref for the react portal

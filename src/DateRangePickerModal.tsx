@@ -1,7 +1,6 @@
 import { AbsoluteLayout, StackLayout } from '@nativescript/core';
 import * as React from 'react'
 import * as RNS from 'react-nativescript'
-import { DatePicker } from './DatePicker';
 import { DateRangePicker } from './DateRangePicker';
 
 // This is needed to keep the reconciler aware that it's the same portal on each render
@@ -22,7 +21,7 @@ type ModalDateRangePicker = {
     calendarMonthNameStyles?: (date: Date) => JSX.Element
 }
 
-export default function ModalDateRangePicker(props: ModalDateRangePicker) {
+export default function DateRangePickerModal(props: ModalDateRangePicker) {
     const { onChange, maxDate, minDate, startDate, endDate, dayInMonthStyles, dayOutMonthStyles, selectedDayStyles, todayStyles, calendarMonthNameStyles, betweenDatesStyles } = props
     const containerRef = React.useRef(null); // A ref to the container 
     const portalRef = React.useRef(null); // A ref for the react portal
