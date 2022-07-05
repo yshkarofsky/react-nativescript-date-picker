@@ -16,7 +16,7 @@ type DatePicker = {
 }
 
 export function DatePicker(props: DatePicker) {
-    const { date: dateSelected, onChange, dayInMonthStyles, dayOutMonthStyles, selectedDayStyles, todayStyles } = props
+    const { date: dateSelected, onChange, maxDate, minDate, dayInMonthStyles, dayOutMonthStyles, selectedDayStyles, todayStyles } = props
 
     const [firstDateOnMonth, setFirstDateOnMonth] = React.useState(startOfMonth(dateSelected || new Date()))
         
@@ -28,11 +28,11 @@ export function DatePicker(props: DatePicker) {
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sat']
 
     const getStylesForDay = (date: Date) => {
-        if (format(date, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')) {
-            return todayStyles || styles.today
-        } else if (dateSelected && format(date, 'yyyy-MM-dd') === format(dateSelected, 'yyyy-MM-dd')) {
+        if (dateSelected && format(date, 'yyyy-MM-dd') === format(dateSelected, 'yyyy-MM-dd')) {
             return selectedDayStyles || styles.selectedDate
-        } else if (format(date, 'yyyy-MM') !== format(firstDateOnMonth, 'yyyy-MM')) {
+        }   if (format(date, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')) {
+            return todayStyles || styles.today
+        } else if (format(date, 'yyyy-MM') !== format(firstDateOnMonth, 'yyyy-MM') || (minDate && date <= minDate) || (maxDate && date >= maxDate)) {
             return dayOutMonthStyles || styles.dayOutOfMonth
         } else {
             return dayInMonthStyles || styles.dayInMonth
@@ -65,6 +65,7 @@ export function DatePicker(props: DatePicker) {
                                 style={getStylesForDay(dateInCal)} 
                                 row={Math.ceil(i/7)} 
                                 col={getDay(dateInCal)} 
+                                isEnabled={(!maxDate || dateInCal <= maxDate) && (!minDate || dateInCal >= minDate)}
                                 key={i} onTap={() => onChange(dateInCal)} 
                             >
                                 <label text={format(dateInCal, 'd')} />
